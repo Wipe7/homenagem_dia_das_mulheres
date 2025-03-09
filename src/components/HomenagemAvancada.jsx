@@ -2,13 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import MargaridaInterativa from './MargaridaInterativa';
 import Confetti from './Confetti';
 import AudioPlayer from './AudioPlayer';
+import FotoCasal from './FotoCasal';
 import '../styles/HomenagemAvancada.css';
-
-// Importe aqui sua foto - substitua pelo caminho real da imagem
-// Exemplo para imagem na pasta public: process.env.PUBLIC_URL + '/foto-casal.jpg'
-// Para importar uma imagem na pasta src/assets: import fotoDoCalsa from '../assets/foto-casal.jpg';
-const FOTO_CASAL = "https://via.placeholder.com/400x300/ffb6c1/ffffff?text=Coloque+Sua+Foto+Aqui";
-// ⬆️ Substitua pelo URL ou caminho da sua imagem
 
 const HomenagemAvancada = () => {
   const [showContent, setShowContent] = useState(false);
@@ -30,10 +25,8 @@ const HomenagemAvancada = () => {
       setPlayMusic(true);
     }, 1000);
     
-    // Mostrar foto após mais um atraso
-    const timer3 = setTimeout(() => {
-      setShowPhoto(true);
-    }, 2000);
+    // Mostrar foto imediatamente
+    setShowPhoto(true);
 
     // Gerar margaridas interativas aleatórias
     const novasMargaridas = [];
@@ -52,7 +45,6 @@ const HomenagemAvancada = () => {
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
-      clearTimeout(timer3);
     };
   }, []);
 
@@ -103,25 +95,8 @@ const HomenagemAvancada = () => {
       <div className={`homenagem-avancada-content ${showContent ? 'visible' : ''}`}>
         <h1>Feliz Dia das Mulheres!</h1>
         
-        {/* Área da foto */}
-        <div className={`foto-container ${showPhoto ? 'visible' : ''}`}>
-          <div className="foto-frame">
-            <div 
-              className="foto-moldura"
-              onClick={handlePhotoClick}
-            >
-              <img 
-                src={FOTO_CASAL} 
-                alt="Nós dois" 
-                className="foto-casal"
-              />
-              <div className="foto-brilho"></div>
-            </div>
-            <div className="foto-legenda">
-              Nosso amor é como uma margarida: simples, bonito e duradouro ♥
-            </div>
-          </div>
-        </div>
+        {/* Usar o novo componente de foto */}
+        <FotoCasal />
         
         <div 
           className="mensagem" 
@@ -156,7 +131,7 @@ const HomenagemAvancada = () => {
           
           <p className="assinatura">
             Com todo meu amor e admiração,<br />
-            William
+            Seu marido
           </p>
         </div>
       </div>
