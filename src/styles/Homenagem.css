@@ -1,0 +1,90 @@
+.homenagem-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8ffc9 0%, #ecffdb 50%, #e0f7fa 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .homenagem-content {
+    position: relative;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+    z-index: 10;
+  }
+  
+  .homenagem-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .homenagem-content h1 {
+    text-align: center;
+    color: #ff69b4;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mensagem {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+  }
+  
+  .mensagem p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .mensagem .querida {
+    font-size: 1.3rem;
+    color: #ff69b4;
+    font-weight: 600;
+  }
+  
+  .mensagem .assinatura {
+    text-align: right;
+    font-style: italic;
+    margin-top: 3rem;
+    color: #ff69b4;
+  }
+  
+  .margarida-decorativa {
+    position: absolute;
+    z-index: 1;
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+  
+  /* Tornar responsivo */
+  @media (max-width: 768px) {
+    .homenagem-content {
+      padding: 2rem;
+    }
+    
+    .homenagem-content h1 {
+      font-size: 2rem;
+    }
+    
+    .mensagem {
+      font-size: 1rem;
+    }
+  }
