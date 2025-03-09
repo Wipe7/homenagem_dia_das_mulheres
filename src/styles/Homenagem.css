@@ -1,55 +1,236 @@
-.homenagem-container {
+.homenagem-avancada-container {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     background: linear-gradient(135deg, #f8ffc9 0%, #ecffdb 50%, #e0f7fa 100%);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 2rem;
   }
   
-  .homenagem-content {
+  .homenagem-avancada-content {
     position: relative;
     max-width: 800px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.92);
     padding: 3rem;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease, transform 1s ease;
+    transform: translateY(20px) scale(0.95);
+    transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    margin-top: 2rem;
+  }
+  
+  .homenagem-avancada-content.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  .homenagem-avancada-content h1 {
+    text-align: center;
+    background: linear-gradient(90deg, #ff69b4, #ff1493, #ff69b4);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    text-shadow: 0px 0px 10px rgba(255, 105, 180, 0.2);
+    animation: gradient-text 3s linear infinite;
+  }
+  
+  .personalizacao {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  
+  .personalizacao input {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border: 2px solid #ff69b4;
+    border-radius: 20px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  
+  .personalizacao input:focus {
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    border-color: #ff1493;
+  }
+  
+  .foto-container {
+    max-width: 400px;
+    margin: 0 auto 2rem;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .foto-container.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .foto-frame {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .foto-moldura {
+    position: relative;
+    padding: 15px;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffb6c1 100%);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.3);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: rotate(-2deg);
+  }
+  
+  .foto-moldura:hover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
+  }
+  
+  .foto-casal {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+  }
+  
+  .foto-brilho {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    animation: brilho-foto 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  .foto-legenda {
+    margin-top: 15px;
+    text-align: center;
+    font-style: italic;
+    color: #ff69b4;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.3s;
+    text-shadow: 0px 0px 2px white;
+  }
+  
+  .coracao-foto {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff1493;
+    transform: rotate(45deg);
+    animation: heart-fly 1s forwards;
+    opacity: 0;
     z-index: 10;
   }
   
-  .homenagem-content.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .coracao-foto:before,
+  .coracao-foto:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #ff1493;
+    border-radius: 50%;
+    position: absolute;
   }
   
-  .homenagem-content h1 {
-    text-align: center;
-    color: #ff69b4;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  .coracao-foto:before {
+    top: -10px;
+    left: 0;
+  }
+  
+  .coracao-foto:after {
+    top: 0;
+    left: -10px;
+  }
+  
+  @keyframes brilho-foto {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  .foto-btn {
+    padding: 10px 20px;
+    background-color: white;
+    color: #ff1493;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .foto-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   }
   
   .mensagem {
     font-size: 1.1rem;
     line-height: 1.8;
     color: #555;
+    position: relative;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .mensagem:hover {
+    background-color: rgba(255, 255, 255, 0.7);
   }
   
   .mensagem p {
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
   }
   
   .mensagem .querida {
     font-size: 1.3rem;
     color: #ff69b4;
     font-weight: 600;
+  }
+  
+  .mensagem .dica {
+    font-size: 0.9rem;
+    color: #999;
+    font-style: italic;
+    text-align: center;
   }
   
   .mensagem .assinatura {
@@ -59,10 +240,55 @@
     color: #ff69b4;
   }
   
+  .coracao {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff1493;
+    transform: rotate(45deg);
+    animation: heart-fly 1s forwards;
+    opacity: 0;
+    z-index: 1;
+  }
+  
+  .coracao:before,
+  .coracao:after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #ff1493;
+    border-radius: 50%;
+    position: absolute;
+  }
+  
+  .coracao:before {
+    top: -10px;
+    left: 0;
+  }
+  
+  .coracao:after {
+    top: 0;
+    left: -10px;
+  }
+  
   .margarida-decorativa {
     position: absolute;
     z-index: 1;
     animation: float 8s ease-in-out infinite;
+  }
+  
+  @keyframes heart-fly {
+    0% {
+      transform: rotate(45deg) scale(0);
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: rotate(45deg) scale(1.5) translateY(-20px);
+      opacity: 0;
+    }
   }
   
   @keyframes float {
@@ -74,17 +300,56 @@
     }
   }
   
+  @keyframes gradient-text {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+  
   /* Tornar responsivo */
   @media (max-width: 768px) {
-    .homenagem-content {
-      padding: 2rem;
+    .homenagem-avancada-container {
+      padding: 1rem;
+      align-items: flex-start;
     }
     
-    .homenagem-content h1 {
-      font-size: 2rem;
+    .homenagem-avancada-content {
+      padding: 1.5rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .homenagem-avancada-content h1 {
+      font-size: 1.8rem;
     }
     
     .mensagem {
       font-size: 1rem;
+    }
+    
+    .foto-container {
+      max-width: 100%;
+      margin-bottom: 1.5rem;
+    }
+  
+    .foto-moldura {
+      padding: 10px;
+    }
+  
+    .foto-frame {
+      padding: 5px;
+    }
+  
+    .foto-legenda {
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+    
+    /* Ajustando o número de margaridas para dispositivos móveis */
+    .margarida-decorativa:nth-child(even) {
+      display: none;
     }
   }

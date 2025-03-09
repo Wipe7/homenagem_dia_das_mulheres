@@ -3,14 +3,12 @@ import MargaridaInterativa from './MargaridaInterativa';
 import Confetti from './Confetti';
 import AudioPlayer from './AudioPlayer';
 import '../styles/HomenagemAvancada.css';
-import fotoDoCalsa from '../assets/foto-casal.jpeg'
 
 // Importe aqui sua foto - substitua pelo caminho real da imagem
 // Exemplo para imagem na pasta public: process.env.PUBLIC_URL + '/foto-casal.jpg'
 // Para importar uma imagem na pasta src/assets: import fotoDoCalsa from '../assets/foto-casal.jpg';
-
-const FOTO_CASAL = fotoDoCalsa 
-
+const FOTO_CASAL = "https://via.placeholder.com/400x300/ffb6c1/ffffff?text=Coloque+Sua+Foto+Aqui";
+// ⬆️ Substitua pelo URL ou caminho da sua imagem
 
 const HomenagemAvancada = () => {
   const [showContent, setShowContent] = useState(false);
@@ -18,7 +16,6 @@ const HomenagemAvancada = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showPhoto, setShowPhoto] = useState(false);
   const [playMusic, setPlayMusic] = useState(false);
-  const [nome, setNome] = useState("Suzana");
   const messageRef = useRef(null);
 
   useEffect(() => {
@@ -75,11 +72,6 @@ const HomenagemAvancada = () => {
     }
   };
 
-  // Personalizar o nome
-  const handleNomeChange = (e) => {
-    setNome(e.target.value);
-  };
-  
   // Adicionar pequenos corações ao clicar na foto
   const handlePhotoClick = (e) => {
     // Criar um coração no local do clique
@@ -111,18 +103,6 @@ const HomenagemAvancada = () => {
       <div className={`homenagem-avancada-content ${showContent ? 'visible' : ''}`}>
         <h1>Feliz Dia das Mulheres!</h1>
         
-        {/* Campo para personalizar o nome */}
-        <div className="personalizacao">
-          <label htmlFor="nome">Como você gostaria de ser chamada? </label>
-          <input 
-            type="text" 
-            id="nome" 
-            value={nome} 
-            onChange={handleNomeChange} 
-            placeholder="Digite seu nome"
-          />
-        </div>
-        
         {/* Área da foto */}
         <div className={`foto-container ${showPhoto ? 'visible' : ''}`}>
           <div className="foto-frame">
@@ -138,7 +118,7 @@ const HomenagemAvancada = () => {
               <div className="foto-brilho"></div>
             </div>
             <div className="foto-legenda">
-              Com você vivo meus melhores momentos! ♥
+              Nosso amor é como uma margarida: simples, bonito e duradouro ♥
             </div>
           </div>
         </div>
@@ -148,26 +128,26 @@ const HomenagemAvancada = () => {
           ref={messageRef}
           onClick={handleMessageClick}
         >
-          <p className="querida">Querida {nome},</p>
+          <p className="querida">Querida Amor,</p>
           
           <p>
-            Em todos os caminhos que andei.
-            Sempre encontrei flores pra lhe entregar.
+            Em cada pétala de margarida, vejo reflexos da sua beleza.
+            Em cada amanhecer, encontro a luz do seu sorriso.
           </p>
           
           <p>
-            O meu amor por você é o que me faz querer me dedicar.
-
+            Neste dia especial, quero celebrar não apenas o dia das mulheres,
+            mas celebrar você, que transforma meus dias e dá sentido à minha vida.
           </p>
           
           <p>
-            Seu jeito me inspira e seu amor me completa,
-            obrigado por ser exatamente quem você é.
+            Sua força me inspira, sua doçura me acalma, e seu amor me completa.
+            Obrigado por ser exatamente quem você é.
           </p>
           
           <p>
-            Como lindas flores estão nessa mensagem
-            peço a Deus que meu amor floresça todos os dias por você.
+            Como as margaridas que rodeiam esta mensagem, meu amor por você
+            floresce todos os dias, renovando-se a cada amanhecer.
           </p>
           
           <p className="dica">
@@ -176,7 +156,7 @@ const HomenagemAvancada = () => {
           
           <p className="assinatura">
             Com todo meu amor e admiração,<br />
-            Seu marido
+            William
           </p>
         </div>
       </div>
