@@ -18,7 +18,7 @@ const HomenagemAvancada = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showPhoto, setShowPhoto] = useState(false);
   const [playMusic, setPlayMusic] = useState(false);
-  const [nome, setNome] = useState("Amor");
+  const [nome, setNome] = useState("Suzana");
   const messageRef = useRef(null);
 
   useEffect(() => {
